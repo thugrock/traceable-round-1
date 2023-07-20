@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: traceable-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: traceable-app
+  template:
+    metadata:
+      labels:
+        app: traceable-app
+    spec:
+      containers:
+        - name: traceable-container
+          image: traceableai/traceable-cli
+          ports:
+            - containerPort: 13962
